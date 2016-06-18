@@ -1,0 +1,6 @@
+framework module CDBKit {
+  umbrella header "CDBKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

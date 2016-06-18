@@ -1,42 +1,41 @@
 #
-# Be sure to run `pod lib lint CDBiCloudKit.podspec' to ensure this is a
+# Be sure to run `pod lib lint CDBiCloudReadyDocumentsContainer.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
+@version = "1.0.0"
+
 Pod::Spec.new do |s|
-  s.name             = 'CDBiCloudKit'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of CDBiCloudKit.'
+  s.name             = "CDBiCloudKit"
+  s.version          = @version
+  s.summary          = "Documents, CoreData Kit for iCloud"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
+#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    CDBCloudConnection maintains connection to a Cloud and provide helpful states.
+    CDBCloudStore provide enable/disable and CRUD for CoreData iCloud store and remove duplicates logic.
+    CDBDocumentContainer provide CRUD for documents in iCloud.
+    CDBDocument provides document file states and user friendly properties to check them.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/CDBiCloudKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'yocaminobien' => 'yocaminobien@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/CDBiCloudKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.homepage         = "https://github.com/yocaminobien/CDBiCloudKit"
+  s.license          = 'MIT'
+  s.author           = { "yocaminobien" => "yocaminobien@gmail.com" }
+  s.source           = { :git => "https://github.com/yocaminobien/CDBiCloudKit.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/yocaminobien'
 
-  s.ios.deployment_target = '8.0'
+  s.platform     = :ios, '7.0'
+  s.requires_arc = true
 
   s.source_files = 'CDBiCloudKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'CDBiCloudKit' => ['CDBiCloudKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'CoreData'
+  s.dependency 'CDBKit', '~> 0.0'
+  s.dependency 'CDBUUID', '~> 1.0.0'
 end

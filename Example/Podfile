@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CDBiCloudKit_Example' do
+  pod 'CDBiCloudKit', :path => '../'
+
+  target 'CDBiCloudKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

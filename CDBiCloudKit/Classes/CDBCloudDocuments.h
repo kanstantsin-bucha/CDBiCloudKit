@@ -162,6 +162,9 @@ CDBDocumentDelegate
 - (void)moveDocument:(CDBDocument * _Nonnull)document
                toURL:(NSURL * _Nonnull)destinationURL
           completion:(CDBErrorCompletion _Nonnull)completion;
+
+- (void)synchronousEnsureThatDirectoryPresentsAtURL:(NSURL * _Nonnull)URL
+                                          comletion:(CDBErrorCompletion _Nullable)completion;
 @end
 
 

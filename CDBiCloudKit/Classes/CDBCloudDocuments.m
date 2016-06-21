@@ -283,6 +283,11 @@
     return result;
 }
 
+- (NSString *)documentNameUsingItURL:(NSURL *)URL {
+    NSString * result = URL.path.lastPathComponent;
+    return result;
+}
+
 - (void)addDelegate:(id<CDBCloudDocumentsDelegate> _Nonnull)delegate {
     self.delegate = delegate;
 }

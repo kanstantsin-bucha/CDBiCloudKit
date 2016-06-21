@@ -74,10 +74,22 @@ CDBDocumentDelegate
 - (NSArray * _Nullable)URLsForItemsInsideUbiquitosDirectory:(NSURL * _Nonnull)directory;
 
 /**
- return all URLs in specified directory
- **/
+ return full document alias for storage
+ @example:
+ path: /storage/images/document.txt
+ alias: images/document.txt
+**/
 
 - (NSString * _Nullable)documentAliasUsingItURL:(NSURL *_Nonnull)URL;
+
+/**
+ return document name
+ @example:
+ path: /storage/images/document.txt
+ name: document.txt
+ **/
+
+- (NSString *)documentNameUsingItURL:(NSURL * _Nonnull)URL;
 
 /**
  Add delegate to notify changes

@@ -140,6 +140,10 @@ CDBDocumentDelegate
                                documentContent:(NSData * _Nullable)content
                                     completion:(CDBiCloudDocumentCompletion _Nonnull)completion;
 
+- (void)createClosedLocalDocumentAtURL:(NSURL * _Nonnull)URL
+                           withContent:(NSData * _Nullable)content
+                            completion:(CDBiCloudDocumentCompletion _Nonnull)completion;
+
 - (void)readContentOfDocumentAtURL:(NSURL * _Nonnull)URL
                         completion:(nonnull void(^)(NSData * _Nullable data, NSError * _Nullable error))completion;
 /**

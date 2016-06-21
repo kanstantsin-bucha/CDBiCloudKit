@@ -104,7 +104,9 @@
 //}
 
 - (void)presentedSubitemDidChangeAtURL:(NSURL *)URL {
-    DLogCDB(@"%@", self.fileName);
+    DLogCDB(@"%@ presentedSubitemDidChangeAtURL:\
+            \r %@",
+            self.fileName, URL);
     if ([self.delegate respondsToSelector:@selector(CDBDocumentDirectory:didChangeSubitemAtURL:)] == NO) {
         return;
     }

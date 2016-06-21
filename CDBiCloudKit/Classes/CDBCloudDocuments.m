@@ -338,7 +338,7 @@
     NSURL * fileURL = [self localDocumentFileURLUsingFileName:fileName];
     
     CDBDocument * result = [self documentWithAvailableFileURL:fileURL
-                                                              error:error];
+                                                        error:error];
     return result;
 }
 
@@ -371,7 +371,16 @@
     
     NSURL * fileURL = [self localDocumentFileURLUsingFileName:fileName];
     
-    CDBDocument * result = [[CDBDocument alloc] initWithFileURL:fileURL];
+    [self createClosedLocalDocumentAtURL:fileURL
+                             withContent:content
+                              completion:completion];
+}
+
+- (void)createClosedLocalDocumentAtURL:(NSURL * _Nonnull)URL
+                           withContent:(NSData * _Nullable)content
+                            completion:(CDBiCloudDocumentCompletion _Nonnull)completion {
+    
+    CDBDocument * result = [[CDBDocument alloc] initWithFileURL:URL];
     result.contents = content;
     
     BOOL directory = NO;

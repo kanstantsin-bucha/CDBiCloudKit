@@ -865,7 +865,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/CDBiCloudKit/CDBiCloudKit-prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Target Support Files/CDBiCloudKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -875,7 +874,6 @@
 				PRODUCT_NAME = CDBiCloudKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TAPI_VERIFY_MODE = ErrorsAndWarnings;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -954,7 +952,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/CDBiCloudKit/CDBiCloudKit-prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Target Support Files/CDBiCloudKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -964,7 +961,6 @@
 				PRODUCT_NAME = CDBiCloudKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TAPI_VERIFY_MODE = ErrorsAndWarnings;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

@@ -114,7 +114,7 @@
     return result;
 }
 
-- (NSError *)directoryUnacceptableURLErrorUsingURL:(NSURL *)URL {
++ (NSError *)directoryUnacceptableURLErrorUsingURL:(NSURL *)URL {
     NSString * errorDescription = [NSString stringWithFormat:@"Could not handle nil or empty URL: %@", URL];
     NSDictionary * userInfo = @{NSLocalizedDescriptionKey: errorDescription};
     NSError * result = [NSError errorWithDomain:NSStringFromClass([self class])
@@ -130,16 +130,18 @@
         return;
     }
     
-    [self synchronousEnsureThatDirectoryPresentsAtURL:localDocumentsURL
-                                            comletion:^(NSError *error) {
-        if (error != nil) {
-            NSLog(@"[CDBCloudDocuments] could not resolve local documents URL %@\
-                  \n failed with error: %@",
-                  localDocumentsURL, error);
-        } else {
-            _localDocumentsURL = localDocumentsURL;
-        }
-    }];
+    NSError * error = nil;
+    [[self class] ensureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
+                                  usingFileManager:self.fileManager
+                                             error:&error];
+    
+    if (error != nil) {
+        NSLog(@"[CDBCloudDocuments] could not resolve local documents URL %@\
+              \n failed with error: %@",
+              localDocumentsURL, error);
+    } else {
+        _localDocumentsURL = localDocumentsURL;
+    }
 }
 
 #pragma mark Lazy loading
@@ -766,7 +768,7 @@
     BOOL exist = [self.fileManager fileExistsAtPath:fileURL.path
                                         isDirectory:&directory];
     if (exist == NO || directory) {
-        *error = [self directoryUnacceptableURLErrorUsingURL:fileURL];
+        *error = [[self class] directoryUnacceptableURLErrorUsingURL:fileURL];
         return nil;
     }
     
@@ -861,78 +863,77 @@
 #pragma mark Directory checking
 
 - (void)ensureThatUbiquitousDocumentsDirectoryPresents {
-    [self synchronousEnsureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
-                                            comletion:^(NSError *error) {
-        if (error == nil) {
-            return;
-        }
-        NSLog(@"[CDBCloudDocuments] could not resolve ubiquituos documents directory URL %@\
-              \n failed with error: %@",
-              self.ubiquityDocumentsURL, error);
-        NSLog(@"[CDBCloudDocuments] ubiquituos documents directory resolved to default path");
-        self.cloudPathComponent = CDBiCloudDocumentsDirectoryPathComponent;
-        [self synchronousEnsureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
-                                                comletion:^(NSError *error) {
-            if (error == nil) {
-                return;
-            }
-            NSLog(@"[CDBCloudDocuments] unpredicable error \
-                  \ncould not resolve default ubiquituos documents directory URL %@\
-                  \n failed with error: %@",
-                  self.ubiquityDocumentsURL, error);
-        }];
-    }];
-}
+    NSError * error = nil;
+    [[self class] ensureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
+                                  usingFileManager:self.fileManager
+                                             error:&error];
 
-- (void)synchronousEnsureThatDirectoryPresentsAtURL:(NSURL *)URL
-                                          comletion:(CDBErrorCompletion)completion {
-    if (URL == nil) {
-        if (completion != nil) {
-            completion([self directoryUnacceptableURLErrorUsingURL:URL]);
-        }
+    if (error == nil) {
         return;
     }
     
-    NSError * error = nil;
+    NSLog(@"[CDBCloudDocuments] could not resolve ubiquituos documents directory URL %@\
+          \n failed with error: %@",
+          self.ubiquityDocumentsURL, error);
+    NSLog(@"[CDBCloudDocuments] ubiquituos documents directory resolved to default path");
+    self.cloudPathComponent = CDBiCloudDocumentsDirectoryPathComponent;
+    
+    
+    NSError * nextTryError = nil;
+    [[self class] ensureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
+                                  usingFileManager:self.fileManager
+                                             error:&nextTryError];
+    
+    if (nextTryError == nil) {
+        return;
+    }
+    
+    NSLog(@"[CDBCloudDocuments] unpredicable error \
+          \ncould not resolve default ubiquituos documents directory URL %@\
+          \n failed with error: %@",
+          self.ubiquityDocumentsURL, error);
+}
+
++ (BOOL)ensureThatDirectoryPresentsAtURL:(NSURL * _Nonnull)URL
+                         usingFileManager: (NSFileManager *)fileManager
+                                   error:(NSError * _Nullable * _Nullable)error {
+    
+    if (fileManager == nil) {
+        fileManager = [NSFileManager new];
+    }
+    
+    if (URL == nil) {
+        *error = [self directoryUnacceptableURLErrorUsingURL:URL];
+        return NO;
+    }
     
     NSString * directoryPath = [URL path];
     BOOL isDirectory = NO;
-    BOOL exist = [self.fileManager fileExistsAtPath:directoryPath isDirectory:&isDirectory];
+    BOOL exist = [fileManager fileExistsAtPath:directoryPath isDirectory:&isDirectory];
     
     if (exist == NO) {
-        [self.fileManager createDirectoryAtURL:URL
-                   withIntermediateDirectories:YES
-                                    attributes:nil
-                                         error:&error];
-        if (completion != nil) {
-            completion(error);
-        }
-        return;
+        [fileManager createDirectoryAtURL:URL
+              withIntermediateDirectories:YES
+                               attributes:nil
+                                    error:error];
+        return *error == nil;
     }
     
     if (isDirectory) {
-        if (completion != nil) {
-            completion(nil);
-        }
-        return;
+        return YES;
+    }
+
+    [fileManager removeItemAtPath:directoryPath
+                            error:error];
+    if (*error != nil) {
+        return NO;
     }
     
-    [self.fileManager removeItemAtPath:directoryPath
-                                 error:&error];
-    if (error != nil) {
-        if (completion != nil) {
-            completion(error);
-        }
-        return;
-    }
-    
-    [self.fileManager createDirectoryAtURL:URL
-               withIntermediateDirectories:YES
-                                attributes:nil
-                                     error:&error];
-    if (completion != nil) {
-        completion(error);
-    }
+    [fileManager createDirectoryAtURL:URL
+          withIntermediateDirectories:YES
+                           attributes:nil
+                                error:error];
+    return *error == nil;
 }
 
 #pragma mark handle documents versioning

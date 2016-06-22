@@ -89,7 +89,7 @@ CDBDocumentDelegate
  name: document.txt
  **/
 
-- (NSString *)documentNameUsingItURL:(NSURL * _Nonnull)URL;
+- (NSString * _Nullable)documentNameUsingItURL:(NSURL * _Nonnull)URL;
 
 /**
  Add delegate to notify changes
@@ -179,8 +179,10 @@ CDBDocumentDelegate
                toURL:(NSURL * _Nonnull)destinationURL
           completion:(CDBErrorCompletion _Nonnull)completion;
 
-- (void)synchronousEnsureThatDirectoryPresentsAtURL:(NSURL * _Nonnull)URL
-                                          comletion:(CDBErrorCompletion _Nullable)completion;
++ (BOOL)ensureThatDirectoryPresentsAtURL: (NSURL * _Nonnull)URL
+                        usingFileManager: (NSFileManager * _Nullable)fileManager
+                                   error: (NSError * _Nullable * _Nullable)error;
+
 @end
 
 

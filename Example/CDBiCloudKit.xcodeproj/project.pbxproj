@@ -200,12 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "CDBiCloudKit_Example" */;
 			buildPhases = (
-				B45DCF1E3DEA6DA3F9116574 /* 📦 Check Pods Manifest.lock */,
+				B45DCF1E3DEA6DA3F9116574 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				22D2D7FC2FF74E99D1A727D9 /* 📦 Embed Pods Frameworks */,
-				2090B842201E91A32269CF16 /* 📦 Copy Pods Resources */,
+				22D2D7FC2FF74E99D1A727D9 /* [CP] Embed Pods Frameworks */,
+				2090B842201E91A32269CF16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,12 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "CDBiCloudKit_Tests" */;
 			buildPhases = (
-				1C72F106B7D69D2F65FB12E4 /* 📦 Check Pods Manifest.lock */,
+				1C72F106B7D69D2F65FB12E4 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				5DFA2C85DE7401910CDEE577 /* 📦 Embed Pods Frameworks */,
-				67C99733A05140CAB32DEE14 /* 📦 Copy Pods Resources */,
+				5DFA2C85DE7401910CDEE577 /* [CP] Embed Pods Frameworks */,
+				67C99733A05140CAB32DEE14 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -293,14 +293,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C72F106B7D69D2F65FB12E4 /* 📦 Check Pods Manifest.lock */ = {
+		1C72F106B7D69D2F65FB12E4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,14 +308,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2090B842201E91A32269CF16 /* 📦 Copy Pods Resources */ = {
+		2090B842201E91A32269CF16 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,14 +323,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		22D2D7FC2FF74E99D1A727D9 /* 📦 Embed Pods Frameworks */ = {
+		22D2D7FC2FF74E99D1A727D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,14 +338,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5DFA2C85DE7401910CDEE577 /* 📦 Embed Pods Frameworks */ = {
+		5DFA2C85DE7401910CDEE577 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,14 +353,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Tests/Pods-CDBiCloudKit_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67C99733A05140CAB32DEE14 /* 📦 Copy Pods Resources */ = {
+		67C99733A05140CAB32DEE14 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,14 +368,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Tests/Pods-CDBiCloudKit_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B45DCF1E3DEA6DA3F9116574 /* 📦 Check Pods Manifest.lock */ = {
+		B45DCF1E3DEA6DA3F9116574 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

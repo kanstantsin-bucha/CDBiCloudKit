@@ -6,7 +6,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
-@version = "1.0.0"
+@version = "1.1.0"
 
 Pod::Spec.new do |s|
   s.name             = "CDBiCloudKit"
@@ -25,11 +25,11 @@ Pod::Spec.new do |s|
     CDBDocument provides document file states and user friendly properties to check them.
                        DESC
 
-  s.homepage         = "https://github.com/yocaminobien/CDBiCloudKit"
+  s.homepage         = "https://github.com/truebucha/CDBiCloudKit"
   s.license          = 'MIT'
-  s.author           = { "yocaminobien" => "yocaminobien@gmail.com" }
-  s.source           = { :git => "https://github.com/yocaminobien/CDBiCloudKit.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/yocaminobien'
+  s.author           = { "yocaminobien" => "truebucha@gmail.com" }
+  s.source           = { :git => "https://github.com/truebucha/CDBiCloudKit.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/truebucha'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true

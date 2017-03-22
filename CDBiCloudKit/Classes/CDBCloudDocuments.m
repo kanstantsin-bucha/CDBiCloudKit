@@ -401,13 +401,15 @@
         [result saveToURL:result.fileURL
          forSaveOperation:operation
         completionHandler:^(BOOL success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (success) {
-                    completion(result, nil);
-                    return;
-                }
-                completion(nil, [result iCloudDocumentNotOperableError]);
-            });
+            [result closeWithCompletionHandler:^(BOOL success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (success) {
+                        completion(result, nil);
+                        return;
+                    }
+                    completion(nil, [result iCloudDocumentNotOperableError]);
+                });
+            }];
         }];
     });
 }

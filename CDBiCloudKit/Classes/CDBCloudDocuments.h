@@ -111,6 +111,20 @@ CDBDocumentDelegate
 - (void)makeDocument:(CDBDocument * _Nonnull)document
           ubiquitous:(BOOL)ubiquitous
           completion:(CDBErrorCompletion _Nonnull)completion;
+/** 
+ @brief: method using currentDocumentsURL like base URL to generate 
+         relative path components and ubiquityDocumentsURL to apply this components
+         to mirror the file position in source
+**/
+
+- (NSURL * _Nullable)ubiquityDocumentFileURLUsingLocalURL:(NSURL * _Nonnull)localURL;
+
+/**
+ @brief: method using ubiquityDocumentsURL like base URL to generate
+         relative path components and currentDocumentsURL to apply this components
+         to mirror the file position in source
+ **/
+- (NSURL * _Nullable)localDocumentFileURLUsingUbiquityURL:(NSURL * _Nonnull)ubiquitousURL;
 
 /**
  Get document from local documents using file name

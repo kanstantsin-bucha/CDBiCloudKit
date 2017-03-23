@@ -400,7 +400,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                                            error:&error];
     
     if (error != nil) {
-        DLogCDB(@"failed with error %@", error);
+        NSLog(@"failed with error %@", error);
     }
     
     [self enableUbiquitosCoreDataStack];
@@ -421,7 +421,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                     batchSize:1000
                                                         error:&error];
             if (error != nil) {
-                RLogCDB(YES, @"removing duplicates for entity %@ failed with %@", entity.name, error);
+                NSLog(@"removing duplicates for entity %@ failed with %@", entity.name, error);
             }
         }
     }
@@ -755,7 +755,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
 
 - (void)storeSystemProvidedUbiquitosStoreData {
     NSURL * URL = self.ubiqutosStore.URL;
-    DLogCDB(@"Ubiquios store URL %@", URL);
+    //NSLog(@"Ubiquios store URL %@", URL);
     [self saveUbiquitosStoreURL:URL
                       usingName:self.name];
 }
@@ -866,13 +866,13 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
     
     
     if (internalError != nil) {
-        RLogCDB(YES, @"failed to fetch values with dupes for unique key - %@, entity %@",
+        NSLog(@"failed to fetch values with dupes for unique key - %@, entity %@",
                 uniquePropertyKey, entity.name);
         *error = internalError;
         return;
     }
     
-    RLogCDB(YES, @"found %ld not uniqued keys for entity %@",
+    NSLog(@"found %ld not uniqued keys for entity %@",
             (unsigned long) valuesWithDupes.count, entity.name);
     
     
@@ -886,7 +886,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                error:&internalError];
     
     if (internalError != nil) {
-        RLogCDB(YES, @"failed to resolve dupes for unique key - %@, timestamp key - %@, entity %@",
+        NSLog(@"failed to resolve dupes for unique key - %@, timestamp key - %@, entity %@",
                 uniquePropertyKey, timestampKey, entity.name);
         *error = internalError;
         return;
@@ -923,7 +923,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                            error:&internalError];
     
     if (internalError != nil) {
-        RLogCDB(YES, @"failed to execute request: %@\
+        NSLog(@"failed to execute request: %@\
                       \r using context: %@\
                       \r error: %@",
                        request, context, internalError);
@@ -963,7 +963,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                     error:error];
     
     if (internalError != nil) {
-        RLogCDB(YES, @"failed to execute dupeRequest: %@\
+        NSLog(@"failed to execute dupeRequest: %@\
                 \r using context: %@\
                 \r error: %@",
                 dupeRequest, context, internalError);
@@ -995,7 +995,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
             prevObject = duplicate;
         }
     }
-    RLogCDB(YES, @"delete %ld dupes for unique key - %@, using newer timestamp logic at key - %@, entity %@",
+    NSLog(@"delete %ld dupes for unique key - %@, using newer timestamp logic at key - %@, entity %@",
             (unsigned long)removedDupesCount, uniquePropertyKey, timestampKey, entity.name);
 }
 
@@ -1009,7 +1009,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
         return;
     }
     
-    RLogCDB(YES, @"update entity %@ with %@", entity.name, propertiesToUpdate);
+    NSLog(@"update entity %@ with %@", entity.name, propertiesToUpdate);
     
     NSBatchUpdateRequest * request = [[NSBatchUpdateRequest alloc] initWithEntity:entity];
     request.predicate = [NSPredicate predicateWithFormat:@"uid = nil"];
@@ -1020,11 +1020,11 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
     NSBatchUpdateResult * result = (NSBatchUpdateResult *)[context executeRequest:request
                                                                             error:&error];
     if (error != nil) {
-        RLogCDB(YES, @" failed update entity %@ with %@", entity.name, error);
+        NSLog(@" failed update entity %@ with %@", entity.name, error);
         return;
     }
     
-    RLogCDB(YES, @"%@ entities updated entity %@", result.result, entity.name);
+    NSLog(@"%@ entities updated entity %@", result.result, entity.name);
 }
 
 + (void)performBatchUIDsPopulationForEntity:(NSEntityDescription *)entity
@@ -1050,7 +1050,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                                   error:&error];
     
     if (error != nil) {
-        RLogCDB(YES, @" failed fetch empty UID objects for entity %@ at unique key - %@ - with %@",
+        NSLog(@" failed fetch empty UID objects for entity %@ at unique key - %@ - with %@",
                 entity.name, uniquePropertyKey, error);
         return;
     }
@@ -1077,12 +1077,12 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
     }
     
     if (error != nil) {
-        RLogCDB(YES, @" failed update UIDs for entity %@  at unique key - %@ - with %@",
+        NSLog(@" failed update UIDs for entity %@  at unique key - %@ - with %@",
                 entity.name, uniquePropertyKey, error);
         return;
     }
     
-    RLogCDB(YES, @"%lu UIDs created at unique key - %@ - for entity %@",
+    NSLog(@"%lu UIDs created at unique key - %@ - for entity %@",
             (unsigned long)results.count, uniquePropertyKey, entity.name);
 }
 
@@ -1120,7 +1120,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
                                                                   error:error];
     
     if (*error != nil) {
-        RLogCDB(YES, @" failed fetch objects for entity %@ %@",
+        NSLog(@" failed fetch objects for entity %@ %@",
                 entity.name, *error);
         return;
     }
@@ -1146,7 +1146,7 @@ CDBCloudStoreState CDBRemoveStoreState(CDBCloudStoreState state, NSUInteger opti
     }
     
     if (*error != nil) {
-        RLogCDB(YES, @" failed remove objects for entity %@ %@",
+        NSLog(@" failed remove objects for entity %@ %@",
                 entity.name, *error);
         return;
     }

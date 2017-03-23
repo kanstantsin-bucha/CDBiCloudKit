@@ -26,7 +26,7 @@
 
 - (instancetype)initWithFileURL:(NSURL *)URL {
     if (URL.path.length == 0) {
-        DLogCDB(@"FAILED create document with nil URL");
+        NSLog(@"FAILED create document with nil URL");
         return nil;
     }
     
@@ -67,20 +67,20 @@
 #pragma mark NSFilePresenter
 
 - (void)savePresentedItemChangesWithCompletionHandler:(void (^)(NSError * __nullable errorOrNil))completionHandler {
-    DLogCDB(@"%@", self.fileName);
+    //DLogCDB(@"%@", self.fileName);
 }
 
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(void (^)(NSError * __nullable errorOrNil))completionHandler {
-    DLogCDB(@"%@", self.fileName);
+    //DLogCDB(@"%@", self.fileName);
 }
 
 - (void)presentedItemDidMoveToURL:(NSURL *)newURL {
     [super presentedItemDidMoveToURL:newURL];
-    DLogCDB(@"%@ new URL: %@", self.fileName, newURL);
+    //DLogCDB(@"%@ new URL: %@", self.fileName, newURL);
 }
 
 - (void)presentedItemDidChange {
-    DLogCDB(@"%@", self.fileName);
+    //DLogCDB(@"%@", self.fileName);
 }
 
 #pragma mark NSFilePresenter directory
@@ -104,9 +104,9 @@
 //}
 
 - (void)presentedSubitemDidChangeAtURL:(NSURL *)URL {
-    DLogCDB(@"%@ presentedSubitemDidChangeAtURL:\
-            \r %@",
-            self.fileName, URL);
+    //DLogCDB(@"%@ presentedSubitemDidChangeAtURL:\
+    //        \r %@",
+    //        self.fileName, URL);
     if ([self.delegate respondsToSelector:@selector(CDBDocumentDirectory:didChangeSubitemAtURL:)] == NO) {
         return;
     }

@@ -257,10 +257,6 @@
     
     
     if (shouldPostChangeNotificaton) {
-        DLogCDB(@"update for ubiquity available %@\
-              \r with container %@",
-              NSStringFromBool(active),
-              self.ubiquityContainerURL);
         [self notifyDelegateThatDocumentsDidChangeState];
     }
 }

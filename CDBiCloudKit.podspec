@@ -6,7 +6,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
-@version = "1.1.2"
+@version = "1.1.3"
 
 Pod::Spec.new do |s|
   s.name             = "CDBiCloudKit"
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = "https://github.com/truebucha/CDBiCloudKit"
   s.license          = 'MIT'
-  s.author           = { "yocaminobien" => "truebucha@gmail.com" }
+  s.author           = { "truebucha" => "truebucha@gmail.com" }
   s.source           = { :git => "https://github.com/truebucha/CDBiCloudKit.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/truebucha'
 
@@ -36,6 +36,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'CDBiCloudKit/Classes/**/*'
   s.frameworks = 'UIKit', 'CoreData'
-  s.dependency 'CDBKit', '~> 0.0'
+  s.dependency 'CDBKit', '~> 1.0'
   s.dependency 'CDBUUID', '~> 1.0.0'
 end

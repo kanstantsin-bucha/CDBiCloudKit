@@ -1,15 +1,28 @@
 
 #if __has_feature(objc_modules)
     @import Foundation;
-    @import UIKit;
 #else
     #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
 #endif
 
 
 #import "CDBiCloudKitConstants.h"
 #import <CDBKit/CDBKit.h>
+
+#ifdef __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_OS_OSX
+        // Mac
+        #import <AppKit/AppKit.h>
+        typedef NSDocument BaseDocument;
+    #elif TARGET_OS_IOS
+        // iOS
+        #import <UIKit/UIKit.h>
+        typedef UIDocument BaseDocument;
+    #else
+        typedef NSObject BaseDocument;
+    #endif
+#endif
 
 
 @class CDBDocument;
@@ -26,7 +39,7 @@
 @end
 
 
-@interface CDBDocument : UIDocument
+@interface CDBDocument : BaseDocument
 
 @property (strong, nonatomic, nullable) NSData * contents;
 @property (assign, nonatomic) CDBFileState fileState;
@@ -57,6 +70,9 @@
 
 + (instancetype _Nullable)documentWithFileURL:(NSURL * _Nonnull)url
                                      delegate:(id<CDBDocumentDelegate> _Nullable)delegate;
+#if TARGET_OS_OSX
+- (void)closeWithCompletionHandler:(void (^ __nullable)(BOOL success))completionHandler;
+#endif
 
 - (NSError * _Nonnull)iCloudDocumentNotOperableError;
 

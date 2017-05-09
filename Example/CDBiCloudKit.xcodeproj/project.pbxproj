@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08E9FE6F1EC21F9100AB85C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9FE6E1EC21F9100AB85C0 /* AppDelegate.m */; };
+		08E9FE721EC21F9100AB85C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9FE711EC21F9100AB85C0 /* main.m */; };
+		08E9FE751EC21F9100AB85C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9FE741EC21F9100AB85C0 /* ViewController.m */; };
+		08E9FE771EC21F9100AB85C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08E9FE761EC21F9100AB85C0 /* Assets.xcassets */; };
+		08E9FE7A1EC21F9100AB85C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E9FE781EC21F9100AB85C0 /* Main.storyboard */; };
 		3D42A06878ADDF5CF808B01C /* Pods_CDBiCloudKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F323C66A548E583F87FB33C /* Pods_CDBiCloudKit_Tests.framework */; };
+		5EFD9C5D7F6628EDDEF3BA92 /* Pods_Pod_CDBiCloudKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410CE969E8942E70D2FED90 /* Pods_Pod_CDBiCloudKit_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -22,7 +28,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		C1061D8490AFC28D25A4A3C7 /* Pods_CDBiCloudKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438AAEE14C6F46EB4C7F5C0 /* Pods_CDBiCloudKit_Example.framework */; };
+		C39CE8855489D46D08D68D6E /* Pods_Pod_CDBiCloudKit_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13EBBEFB0F7B13A7CF723B38 /* Pods_Pod_CDBiCloudKit_Mac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +42,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08E9FE6B1EC21F9100AB85C0 /* CDBiCloudKit-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDBiCloudKit-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08E9FE6D1EC21F9100AB85C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		08E9FE6E1EC21F9100AB85C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		08E9FE711EC21F9100AB85C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		08E9FE731EC21F9100AB85C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		08E9FE741EC21F9100AB85C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		08E9FE761EC21F9100AB85C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08E9FE791EC21F9100AB85C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		08E9FE7B1EC21F9100AB85C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F323C66A548E583F87FB33C /* Pods_CDBiCloudKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDBiCloudKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13212BBF90322480F8216A55 /* Pods-CDBiCloudKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDBiCloudKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		13EBBEFB0F7B13A7CF723B38 /* Pods_Pod_CDBiCloudKit_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pod_CDBiCloudKit_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1977546D463154526E8DD62A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3DD9AD3CC3C8E59CCBA05815 /* Pods-CDBiCloudKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDBiCloudKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		57946A6F13C9AECC0596D5EB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		5DCC43801F070B97834ECA00 /* Pods-Pod-CDBiCloudKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pod-CDBiCloudKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pod-CDBiCloudKit_Example/Pods-Pod-CDBiCloudKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CDBiCloudKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDBiCloudKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,13 +78,25 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		690D6A70839D8E53B2D76FCE /* Pods-CDBiCloudKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDBiCloudKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDBiCloudKit_Tests/Pods-CDBiCloudKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6BB186A65604B7EA6ACB768E /* Pods-Pod-CDBiCloudKit-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pod-CDBiCloudKit-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pod-CDBiCloudKit-Mac/Pods-Pod-CDBiCloudKit-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		7410CE969E8942E70D2FED90 /* Pods_Pod_CDBiCloudKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pod_CDBiCloudKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		996ACE95B96F1BF683A22FF0 /* Pods-Pod-CDBiCloudKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pod-CDBiCloudKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pod-CDBiCloudKit_Example/Pods-Pod-CDBiCloudKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C1D9B2F9740E667B0C8BAD85 /* Pods-Pod-CDBiCloudKit-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pod-CDBiCloudKit-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pod-CDBiCloudKit-Mac/Pods-Pod-CDBiCloudKit-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		E730F03B910C37A2D801C7E1 /* CDBiCloudKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CDBiCloudKit.podspec; path = ../CDBiCloudKit.podspec; sourceTree = "<group>"; };
 		E8860BCD7BF621717C7C31CD /* Pods-CDBiCloudKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDBiCloudKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDBiCloudKit_Tests/Pods-CDBiCloudKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F438AAEE14C6F46EB4C7F5C0 /* Pods_CDBiCloudKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDBiCloudKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		08E9FE681EC21F9100AB85C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39CE8855489D46D08D68D6E /* Pods_Pod_CDBiCloudKit_Mac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F587195388D20070C39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,7 +104,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				C1061D8490AFC28D25A4A3C7 /* Pods_CDBiCloudKit_Example.framework in Frameworks */,
+				5EFD9C5D7F6628EDDEF3BA92 /* Pods_Pod_CDBiCloudKit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,12 +122,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08E9FE6C1EC21F9100AB85C0 /* CDBiCloudKit-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				08E9FE6D1EC21F9100AB85C0 /* AppDelegate.h */,
+				08E9FE6E1EC21F9100AB85C0 /* AppDelegate.m */,
+				08E9FE731EC21F9100AB85C0 /* ViewController.h */,
+				08E9FE741EC21F9100AB85C0 /* ViewController.m */,
+				08E9FE761EC21F9100AB85C0 /* Assets.xcassets */,
+				08E9FE781EC21F9100AB85C0 /* Main.storyboard */,
+				08E9FE7B1EC21F9100AB85C0 /* Info.plist */,
+				08E9FE701EC21F9100AB85C0 /* Supporting Files */,
+			);
+			path = "CDBiCloudKit-Mac";
+			sourceTree = "<group>";
+		};
+		08E9FE701EC21F9100AB85C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08E9FE711EC21F9100AB85C0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for CDBiCloudKit */,
 				6003F5B5195388D20070C39A /* Tests */,
+				08E9FE6C1EC21F9100AB85C0 /* CDBiCloudKit-Mac */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				7B3C06C9A14BF9D8E419FB73 /* Pods */,
@@ -110,6 +163,7 @@
 			children = (
 				6003F58A195388D20070C39A /* CDBiCloudKit_Example.app */,
 				6003F5AE195388D20070C39A /* CDBiCloudKit_Tests.xctest */,
+				08E9FE6B1EC21F9100AB85C0 /* CDBiCloudKit-Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +177,8 @@
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				F438AAEE14C6F46EB4C7F5C0 /* Pods_CDBiCloudKit_Example.framework */,
 				0F323C66A548E583F87FB33C /* Pods_CDBiCloudKit_Tests.framework */,
+				13EBBEFB0F7B13A7CF723B38 /* Pods_Pod_CDBiCloudKit_Mac.framework */,
+				7410CE969E8942E70D2FED90 /* Pods_Pod_CDBiCloudKit_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,6 +245,10 @@
 				13212BBF90322480F8216A55 /* Pods-CDBiCloudKit_Example.release.xcconfig */,
 				690D6A70839D8E53B2D76FCE /* Pods-CDBiCloudKit_Tests.debug.xcconfig */,
 				E8860BCD7BF621717C7C31CD /* Pods-CDBiCloudKit_Tests.release.xcconfig */,
+				C1D9B2F9740E667B0C8BAD85 /* Pods-Pod-CDBiCloudKit-Mac.debug.xcconfig */,
+				6BB186A65604B7EA6ACB768E /* Pods-Pod-CDBiCloudKit-Mac.release.xcconfig */,
+				5DCC43801F070B97834ECA00 /* Pods-Pod-CDBiCloudKit_Example.debug.xcconfig */,
+				996ACE95B96F1BF683A22FF0 /* Pods-Pod-CDBiCloudKit_Example.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -196,6 +256,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		08E9FE6A1EC21F9100AB85C0 /* CDBiCloudKit-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08E9FE7E1EC21F9100AB85C0 /* Build configuration list for PBXNativeTarget "CDBiCloudKit-Mac" */;
+			buildPhases = (
+				C43EE8CC2F05573D405B7F29 /* [CP] Check Pods Manifest.lock */,
+				08E9FE671EC21F9100AB85C0 /* Sources */,
+				08E9FE681EC21F9100AB85C0 /* Frameworks */,
+				08E9FE691EC21F9100AB85C0 /* Resources */,
+				3278D6638ADFA07543FBD74A /* [CP] Embed Pods Frameworks */,
+				1D4908B0B4E6702C6C331842 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CDBiCloudKit-Mac";
+			productName = "CDBiCloudKit-Mac";
+			productReference = 08E9FE6B1EC21F9100AB85C0 /* CDBiCloudKit-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		6003F589195388D20070C39A /* CDBiCloudKit_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "CDBiCloudKit_Example" */;
@@ -247,6 +327,11 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = yocaminobien;
 				TargetAttributes = {
+					08E9FE6A1EC21F9100AB85C0 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 2K9F73F4AY;
+						ProvisioningStyle = Automatic;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -267,11 +352,21 @@
 			targets = (
 				6003F589195388D20070C39A /* CDBiCloudKit_Example */,
 				6003F5AD195388D20070C39A /* CDBiCloudKit_Tests */,
+				08E9FE6A1EC21F9100AB85C0 /* CDBiCloudKit-Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		08E9FE691EC21F9100AB85C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08E9FE771EC21F9100AB85C0 /* Assets.xcassets in Resources */,
+				08E9FE7A1EC21F9100AB85C0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F588195388D20070C39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +403,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		1D4908B0B4E6702C6C331842 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pod-CDBiCloudKit-Mac/Pods-Pod-CDBiCloudKit-Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2090B842201E91A32269CF16 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,7 +430,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pod-CDBiCloudKit_Example/Pods-Pod-CDBiCloudKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		22D2D7FC2FF74E99D1A727D9 /* [CP] Embed Pods Frameworks */ = {
@@ -335,7 +445,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CDBiCloudKit_Example/Pods-CDBiCloudKit_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pod-CDBiCloudKit_Example/Pods-Pod-CDBiCloudKit_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3278D6638ADFA07543FBD74A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pod-CDBiCloudKit-Mac/Pods-Pod-CDBiCloudKit-Mac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DFA2C85DE7401910CDEE577 /* [CP] Embed Pods Frameworks */ = {
@@ -383,9 +508,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C43EE8CC2F05573D405B7F29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		08E9FE671EC21F9100AB85C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08E9FE751EC21F9100AB85C0 /* ViewController.m in Sources */,
+				08E9FE721EC21F9100AB85C0 /* main.m in Sources */,
+				08E9FE6F1EC21F9100AB85C0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F586195388D20070C39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +565,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		08E9FE781EC21F9100AB85C0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08E9FE791EC21F9100AB85C0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		6003F596195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,6 +592,61 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		08E9FE7C1EC21F9100AB85C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1D9B2F9740E667B0C8BAD85 /* Pods-Pod-CDBiCloudKit-Mac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2K9F73F4AY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "CDBiCloudKit-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.truebucha.CDBiCloudKit-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		08E9FE7D1EC21F9100AB85C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BB186A65604B7EA6ACB768E /* Pods-Pod-CDBiCloudKit-Mac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2K9F73F4AY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "CDBiCloudKit-Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.truebucha.CDBiCloudKit-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		6003F5BD195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -509,7 +722,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DD9AD3CC3C8E59CCBA05815 /* Pods-CDBiCloudKit_Example.debug.xcconfig */;
+			baseConfigurationReference = 5DCC43801F070B97834ECA00 /* Pods-Pod-CDBiCloudKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -526,7 +739,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13212BBF90322480F8216A55 /* Pods-CDBiCloudKit_Example.release.xcconfig */;
+			baseConfigurationReference = 996ACE95B96F1BF683A22FF0 /* Pods-Pod-CDBiCloudKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -588,6 +801,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		08E9FE7E1EC21F9100AB85C0 /* Build configuration list for PBXNativeTarget "CDBiCloudKit-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08E9FE7C1EC21F9100AB85C0 /* Debug */,
+				08E9FE7D1EC21F9100AB85C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6003F585195388D10070C39A /* Build configuration list for PBXProject "CDBiCloudKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

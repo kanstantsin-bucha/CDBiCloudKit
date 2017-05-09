@@ -30,21 +30,38 @@
         return nil;
     }
     
-    self = [super initWithFileURL:URL];
+    #if TARGET_OS_OSX
+        // Mac
+        self = [super initWithContentsOfURL: URL
+                                     ofType: @""
+                                      error: nil];
+    #elif TARGET_OS_IOS
+        // iOS
+        self = [super initWithFileURL:URL];
+    #else
+        self = nil;
+    #endif
+    
     if (self) {
+#if TARGET_OS_IOS
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleUIDocumentStateChangedNotification:)
                                                      name:UIDocumentStateChangedNotification
                                                    object:self];
+#endif
     }
     return self;
 }
 
 - (void)dealloc {
+#if TARGET_OS_IOS
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+#endif
 }
 
 #pragma mark - Notifications -
+
+#if TARGET_OS_IOS
 
 - (void)handleUIDocumentStateChangedNotification:(NSNotification *)notification {
     if (self.documentState != UIDocumentStateInConflict) {
@@ -59,8 +76,8 @@
             [wself.delegate didAutoresolveConflictInCDBDocument:wself];
         }
     });
-    
 }
+#endif
 
 #pragma mark - Protocols -
 
@@ -117,6 +134,16 @@
                        didChangeSubitemAtURL:URL];
     });
 }
+
+#if TARGET_OS_OSX
+- (void)closeWithCompletionHandler:(void (^ __nullable)(BOOL success))handler {
+    [self saveDocument: nil];
+    [self close];
+    if (handler != nil) {
+        handler(YES);
+    }
+}
+#endif
 
 #pragma mark - Protected -
 
@@ -175,10 +202,12 @@
 
 #pragma mark Handling error
 
+#if TARGET_OS_IOS
 - (void)handleError:(NSError *)error userInteractionPermitted:(BOOL)userInteractionPermitted {
     [super handleError:error userInteractionPermitted:userInteractionPermitted];
     NSLog(@"[iCloudDocumentsContainer] iCloudDocument failed with error %@", error);
 }
+#endif
 
 #pragma mark - Private -
 
@@ -243,7 +272,7 @@
 
 - (NSString *)localizedDocumentState {
     NSString * result = @"|";
-    
+#if TARGET_OS_IOS
     if ((self.documentState & UIDocumentStateNormal) != 0) {
         result = [result stringByAppendingString:@" normal |"];
     }
@@ -266,7 +295,7 @@
     if ((self.documentState & UIDocumentStateEditingDisabled) != 0) {
         result = [result stringByAppendingString:@" editind disabled |"];
     }
-    
+#endif
     return result;
 }
 
@@ -312,7 +341,11 @@
 }
 
 - (BOOL)isClosed {
+#if TARGET_OS_OSX
+    BOOL result = self.closed;
+#elif TARGET_OS_IOS
     BOOL result = (self.documentState & UIDocumentStateClosed) != 0;
+#endif
     return result;
 }
 

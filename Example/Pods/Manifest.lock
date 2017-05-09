@@ -2,8 +2,8 @@ PODS:
   - CDBiCloudKit (1.1.3):
     - CDBKit (~> 1.0)
     - CDBUUID (~> 1.0.0)
-  - CDBKit (1.0.0)
-  - CDBUUID (1.0.0)
+  - CDBKit (1.1.1)
+  - CDBUUID (1.0.1)
 
 DEPENDENCIES:
   - CDBiCloudKit (from `../`)
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CDBiCloudKit: cdf025ad4f16ef0552b671e3a82e5df6ee7cc447
-  CDBKit: 1702b5b958ef1559c0106bfd660d3d9d89f038ef
-  CDBUUID: c42280bf7d31b8121ea7a5f94b4c063e5068330d
+  CDBiCloudKit: 43d880fe296a50917d715f2e4b0e46d969c570b6
+  CDBKit: eb073c45d4bffbbad99dc9f2a79effbdab890ea7
+  CDBUUID: 7bed042feb50140be8b886fdba8b758a1d42c81c
 
-PODFILE CHECKSUM: 83b6f51e1afb0dc9a1e93f65106e5e0ad09fff80
+PODFILE CHECKSUM: 01e636f4bc6fe5628abe7a702193ed8f335d1124
 
 COCOAPODS: 1.2.0

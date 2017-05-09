@@ -2,11 +2,9 @@
 
 #if __has_feature(objc_modules)
     @import Foundation;
-    @import UIKit;
     @import CoreData;
 #else
     #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
     #import <CoreData/CoreData.h>
 #endif
 

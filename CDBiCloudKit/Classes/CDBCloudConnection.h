@@ -1,10 +1,8 @@
 
 #if __has_feature(objc_modules)
     @import Foundation;
-    @import UIKit;
 #else
     #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
 #endif
 
 #import <CDBKit/CDBKit.h>

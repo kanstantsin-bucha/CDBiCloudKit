@@ -320,7 +320,7 @@
         handler(YES);
         return;
     }
-    
+
     [document closeWithCompletionHandler:^(BOOL success) {
         handler(success);
     }];
@@ -377,19 +377,25 @@
 - (void)createClosedLocalDocumentAtURL:(NSURL * _Nonnull)URL
                            withContent:(NSData * _Nullable)content
                             completion:(CDBiCloudDocumentCompletion _Nonnull)completion {
-    
-    CDBDocument * result = [[CDBDocument alloc] initWithFileURL:URL];
-    result.contents = content;
-    
     BOOL directory = NO;
-    BOOL exist = [self.fileManager fileExistsAtPath:result.fileURL.path
+    BOOL exist = [self.fileManager fileExistsAtPath:URL.path
                                         isDirectory:&directory];
     
-    if (directory) {
+    if (exist
+        && directory) {
         completion (nil, [self fileNameCouldNotBeDirectoryError]);
         return;
     }
     
+    CDBDocument * result = [CDBDocument documentWithFileURL: URL
+                                                   delegate: self];
+    result.contents = content;
+    
+#if TARGET_OS_OSX
+    if (exist) {
+        [result saveDocument: nil];
+    }
+#elif TARGET_IOS
     UIDocumentSaveOperation operation = exist ? UIDocumentSaveForOverwriting
                                               : UIDocumentSaveForCreating;
     
@@ -408,6 +414,7 @@
             }];
         }];
     });
+#endif
 }
 
 - (void)readContentOfDocumentAtURL:(NSURL *)URL
@@ -770,7 +777,8 @@
         return nil;
     }
     
-    CDBDocument * result = [[CDBDocument alloc] initWithFileURL:fileURL];
+    CDBDocument * result = [CDBDocument documentWithFileURL: fileURL
+                                                   delegate: self];
     return result;
 }
 

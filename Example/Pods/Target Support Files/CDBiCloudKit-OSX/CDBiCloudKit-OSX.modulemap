@@ -1,0 +1,6 @@
+framework module CDBiCloudKit {
+  umbrella header "CDBiCloudKit-OSX-umbrella.h"
+
+  export *
+  module * { export * }
+}

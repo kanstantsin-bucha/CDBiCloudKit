@@ -1,0 +1,6 @@
+framework module Pods_Pod_CDBiCloudKit_Mac {
+  umbrella header "Pods-Pod-CDBiCloudKit-Mac-umbrella.h"
+
+  export *
+  module * { export * }
+}

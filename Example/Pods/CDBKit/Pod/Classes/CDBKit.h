@@ -11,15 +11,32 @@
 #define weakObjCDB(weakRef, obj) varUsingObjCDB(__weak, weakRef, obj);
 #define strongObjCDB(strongRef, obj) varUsingObjCDB(__strong, strongRef, obj);
 
+/* osx vs ios */
+
+#ifdef __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_OS_OSX
+        // Mac
+        #import <AppKit/AppKit.h>
+        typedef NSColor TBColor;
+        typedef NSImage TBImage;
+    #elif TARGET_OS_IOS
+        // iOS
+        #import <UIKit/UIKit.h>
+        typedef UIColor TBColor;
+        typedef UIImage TBImage;
+    #else
+        typedef NSObject TBColor;
+        typedef NSObject TBImage;
+    #endif
+#endif
+
 /* colors */
 
-#ifndef RGBAColor
-    #define RGBAColor(r,g,b,a) [UIColor colorWithRed: r/255.0f green: g/255.0f blue: b/255.0f alpha: a]
-#endif /*RGBAColor*/
-
-#ifndef RGBColor
-    #define RGBColor(r,g,b) RGBAColor(r, g, b, 1.0f)
-#endif /*RGBAColor*/
+TBColor * _Nullable colorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+TBColor * _Nullable colorWithHexAndAlpha(NSString * _Nonnull hex, CGFloat alpha);
+#define colorWithRGB(r,g,b) colorWithRGBA(r, g, b, 1.0f)
+#define colorWithHex(hex) colorWithHexAndAlpha(hex, 1.0f)
 
 /* strings */
 
@@ -29,7 +46,7 @@
 
 #define LSD(x) NSLocalizedString(@#x, nil)
 
-/* typedefs */
+/* completions */
 
 typedef void (^CDBCompletion)();
 typedef void (^CDBBoolCompletion) (BOOL succeed);
@@ -39,6 +56,8 @@ typedef void (^CDBDictionaryErrorCompletion) (NSDictionary * _Nullable dictionar
 typedef void (^CDBObjectErrorCompletion) (id _Nullable object, NSError * _Nullable error);
 typedef void (^CDBStringErrorCompletion) (NSString * _Nullable string, NSError * _Nullable error);
 typedef void (^CDBNumberErrorCompletion) (NSNumber * _Nullable number, NSError * _Nullable error);
+typedef void (^CDBDataErrorCompletion) (NSData * _Nullable number, NSError * _Nullable error);
+typedef void (^CDBImageErrorCompletion) (TBImage * _Nullable number, NSError * _Nullable error);
 
 /* derived classes interface */
 

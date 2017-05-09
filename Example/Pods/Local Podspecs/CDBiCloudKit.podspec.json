@@ -14,14 +14,18 @@
   },
   "social_media_url": "https://twitter.com/truebucha",
   "platforms": {
-    "ios": "7.0"
+    "ios": "7.0",
+    "osx": "10.8"
   },
   "requires_arc": true,
   "source_files": "CDBiCloudKit/Classes/**/*",
-  "frameworks": [
-    "UIKit",
-    "CoreData"
-  ],
+  "ios": {
+    "frameworks": "UIKit"
+  },
+  "osx": {
+    "frameworks": "AppKit"
+  },
+  "frameworks": "CoreData",
   "dependencies": {
     "CDBKit": [
       "~> 1.0"

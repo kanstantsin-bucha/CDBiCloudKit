@@ -1,6 +1,0 @@
-framework module Pods_CDBiCloudKit_Example {
-  umbrella header "Pods-CDBiCloudKit_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

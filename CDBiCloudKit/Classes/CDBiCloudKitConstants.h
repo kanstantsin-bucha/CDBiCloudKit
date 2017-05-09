@@ -1,5 +1,9 @@
 
 
+#ifdef __APPLE__
+    #include "TargetConditionals.h"
+#endif
+    
 #ifndef LSCDB
 
 // localization

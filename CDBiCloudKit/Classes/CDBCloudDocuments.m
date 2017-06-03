@@ -395,6 +395,9 @@
     if (exist) {
         [result saveDocument: nil];
     }
+    // TODO: save doc in mac
+    completion(result, [NSError errorWithDomain:NSStringFromClass([self class]) code:1000 userInfo: nil]);
+    return;
 #endif
 
 #if TARGET_OS_IOS

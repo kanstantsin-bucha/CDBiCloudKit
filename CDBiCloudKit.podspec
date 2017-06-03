@@ -6,7 +6,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
-@version = "1.2.0"
+@version = "1.2.1"
 
 Pod::Spec.new do |s|
   s.name             = "CDBiCloudKit"

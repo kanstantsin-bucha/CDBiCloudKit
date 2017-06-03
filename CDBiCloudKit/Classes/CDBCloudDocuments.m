@@ -395,7 +395,9 @@
     if (exist) {
         [result saveDocument: nil];
     }
-#elif TARGET_IOS
+#endif
+
+#if TARGET_OS_IOS
     UIDocumentSaveOperation operation = exist ? UIDocumentSaveForOverwriting
                                               : UIDocumentSaveForCreating;
     

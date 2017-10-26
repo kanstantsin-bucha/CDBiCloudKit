@@ -14,8 +14,8 @@
   },
   "social_media_url": "https://twitter.com/truebucha",
   "platforms": {
-    "ios": "7.0",
-    "osx": "10.8"
+    "ios": "10.0",
+    "osx": "10.10"
   },
   "requires_arc": true,
   "source_files": "CDBiCloudKit/Classes/**/*",
@@ -28,7 +28,7 @@
   "frameworks": "CoreData",
   "dependencies": {
     "CDBKit": [
-      "~> 1.0"
+      "~> 1.2"
     ],
     "CDBUUID": [
       "~> 1.0.0"

@@ -48,7 +48,7 @@ TBColor * _Nullable colorWithHexAndAlpha(NSString * _Nonnull hex, CGFloat alpha)
 
 /* completions */
 
-typedef void (^CDBCompletion)();
+typedef void (^CDBCompletion)(void);
 typedef void (^CDBBoolCompletion) (BOOL succeed);
 typedef void (^CDBErrorCompletion) (NSError * _Nullable error);
 typedef void (^CDBArrayErrorCompletion) (NSArray * _Nullable array, NSError * _Nullable error);

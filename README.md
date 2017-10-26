@@ -22,7 +22,7 @@ pod "CDBiCloudKit"
 
 ## Author
 
-yocaminobien, yocaminobien@gmail.com
+truebucha, truebucha@gmail.com
 
 ## License
 

@@ -3,7 +3,7 @@
 #import "CDBCloudDocuments.h"
 
 
-#define CDBiCloudDocumentsDirectoryPathComponent @"Documents"
+#define CDB_Documents_ContainerDirectoryPathComponent @"Documents"
 #define CDB_Documents_Processing_Last_Date_Format @"CDB.CDBiCloudReady.documents.%@.processedDate=NSDate"
 
 
@@ -12,7 +12,7 @@
 @property (assign, nonatomic, readwrite) BOOL ubiquitosActive;
 @property (assign, nonatomic, readonly) BOOL ubiquityContainerAccessible;
 
-@property (copy, nonatomic) NSString * cloudPathComponent;
+@property (copy, nonatomic) NSString * containerPathComponent;
 @property (copy, nonatomic) NSString * requestedFilesExtension;
 
 @property (strong, nonatomic) CDBDocument * documentsDirectoryWatchdog;
@@ -21,11 +21,16 @@
 
 @property (weak, nonatomic) id<CDBCloudDocumentsDelegate> delegate;
 
+@property (copy, nonatomic) NSString * appGroupID;
+
 @property (strong, nonatomic) NSMetadataQuery * metadataQuery;
 @property (strong, nonatomic, readonly) NSFileManager * fileManager;
 @property (nonatomic, strong) NSURL * ubiquityContainerURL;
 
+@property (nonatomic, strong) NSURL * appGroupContainerURL;
+
 @property (strong, nonatomic) dispatch_queue_t serialQueue;
+@property (strong, nonatomic, readonly) NSUserDefaults * userDefaults;
 
 @end
 
@@ -41,6 +46,15 @@
 }
 
 #pragma mark Getter
+
+- (NSUserDefaults *) userDefaults {
+    if (self.appGroupsActive
+        && self.appGroupID != nil) {
+        return [[NSUserDefaults alloc] initWithSuiteName: self.appGroupID];
+    } else {
+        return [NSUserDefaults standardUserDefaults];
+    }
+}
 
 - (__strong dispatch_queue_t)serialQueue {
     if (_serialQueue == nil) {
@@ -58,9 +72,12 @@
     NSURL * result = nil;
     if (self.ubiquitosActive) {
         result = self.ubiquityDocumentsURL;
+    } else if (self.appGroupsActive && self.appGroupContainerURL != nil) {
+        result = self.appGroupDocumentsURL;
     } else {
         result = self.localDocumentsURL;
     }
+    
     return result;
 }
 
@@ -71,8 +88,15 @@
 
 - (NSURL *)ubiquityDocumentsURL {
     NSURL * result =
-        [self.ubiquityContainerURL URLByAppendingPathComponent:self.cloudPathComponent
-                                                   isDirectory:YES];
+        [self.ubiquityContainerURL URLByAppendingPathComponent: self.containerPathComponent
+                                                   isDirectory: YES];
+    return result;
+}
+
+- (NSURL *)appGroupsDocumentsURL {
+    NSURL * result =
+        [self.appGroupContainerURL URLByAppendingPathComponent: self.containerPathComponent
+                                                   isDirectory: YES];
     return result;
 }
 
@@ -157,8 +181,8 @@
 
 - (NSURL *)localDocumentsURL {
     if (_localDocumentsURL == nil) {
-        NSArray * URLs = [self.fileManager URLsForDirectory:NSDocumentDirectory
-                                                  inDomains:NSUserDomainMask];
+        NSArray * URLs = [self.fileManager URLsForDirectory: NSDocumentDirectory
+                                                  inDomains: NSUserDomainMask];
         _localDocumentsURL = [URLs lastObject];
     }
     return _localDocumentsURL;
@@ -173,11 +197,17 @@
 
 #pragma mark - life cycle -
 
-- (void)initiateUsingCloudPathComponent:(NSString * _Nullable)pathComponent {
+- (void) initiateUsingContainerPathComponent: (NSString * _Nullable) pathComponent
+                          appGroupIdentifier: (NSString * _Nullable) appGroupID {
+    
+    self.appGroupID = appGroupID;
+    
+    self.appGroupContainerURL = [self.fileManager containerURLForSecurityApplicationGroupIdentifier: self.appGroupID];;
+    
     if (pathComponent.length == 0) {
-        self.cloudPathComponent = CDBiCloudDocumentsDirectoryPathComponent;
+        self.containerPathComponent = CDB_Documents_ContainerDirectoryPathComponent;
     } else {
-        self.cloudPathComponent = pathComponent;
+        self.containerPathComponent = pathComponent;
     }
     
     self.requestedFilesExtension = @"*";
@@ -234,13 +264,13 @@
 
 #pragma mark Handle state changes
 
-- (void)updateForUbiquityActive:(BOOL)active
-      usingUbiquityContainerURL:(NSURL *)containerURL {
+- (void) updateForUbiquityActive: (BOOL) active
+       usingUbiquityContainerURL: (NSURL * _Nullable) ubiquityContainerURL{
     
-    BOOL shouldPostChangeNotificaton = [containerURL isEqual:self.ubiquityContainerURL] == NO
-                                       && containerURL != nil;
+    BOOL shouldPostChangeNotificaton = [ubiquityContainerURL isEqual: self.ubiquityContainerURL] == NO
+                                       && ubiquityContainerURL != nil;
     
-    self.ubiquityContainerURL = containerURL;
+    self.ubiquityContainerURL = ubiquityContainerURL;
 
     if (active
         && self.ubiquitosActive == NO) {
@@ -875,9 +905,9 @@
 
 - (void)ensureThatUbiquitousDocumentsDirectoryPresents {
     NSError * error = nil;
-    [[self class] ensureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
-                                  usingFileManager:self.fileManager
-                                             error:&error];
+        [[self class] ensureThatDirectoryPresentsAtURL:self.ubiquityDocumentsURL
+                                      usingFileManager:self.fileManager
+                                                 error:&error];
 
     if (error == nil) {
         return;
@@ -887,7 +917,7 @@
           \n failed with error: %@",
           self.ubiquityDocumentsURL, error);
     NSLog(@"[CDBCloudDocuments] ubiquituos documents directory resolved to default path");
-    self.cloudPathComponent = CDBiCloudDocumentsDirectoryPathComponent;
+    self.containerPathComponent = CDB_Documents_ContainerDirectoryPathComponent;
     
     
     NSError * nextTryError = nil;
@@ -955,7 +985,7 @@
         return nil;
     }
     
-    NSDate * result = [[NSUserDefaults standardUserDefaults] objectForKey:processedKey];
+    NSDate * result = [self.userDefaults objectForKey: processedKey];
     return result;
 }
 
@@ -970,16 +1000,16 @@
         return;
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:processedDate
-                                              forKey:processedKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.userDefaults setObject: processedDate
+                          forKey: processedKey];
+    [self.userDefaults synchronize];
 }
 
 - (NSString *)processedDateKeyForDocumentWithName:(NSString *)documentName {
     if (documentName == nil) {
         return nil;
     }
-    NSString * result = [NSString stringWithFormat:CDB_Documents_Processing_Last_Date_Format, documentName];
+    NSString * result = [NSString stringWithFormat: CDB_Documents_Processing_Last_Date_Format, documentName];
     return result;
 }
 

@@ -26,8 +26,16 @@ CDBDocumentDelegate
 
 @property (assign, nonatomic) BOOL verbose;
 @property (assign, nonatomic, readonly) BOOL ubiquitosActive;
+@property (assign, nonatomic) BOOL appGroupsActive;
 @property (assign, nonatomic) BOOL metadataQueryShouldStopAfterFinishGathering;
 
+/**
+ This is the URL where documents container points (where files stored)
+ ubiquitosActive => ubiquityDocumentsURL
+    appGroupsActive => appGroupDocumentsURL
+        appGroupsActive == NO => localDocumentsURL
+ App makes attempt to create this path if it doesn't exist
+ **/
 
 @property (copy, nonatomic, readonly, nullable) NSURL * currentDocumentsURL;
 
@@ -40,6 +48,15 @@ CDBDocumentDelegate
 @property (copy, nonatomic, readonly, nullable) NSURL * ubiquityDocumentsURL;
 
 /**
+ This is the URL where app groups documents container points (where local files stored)
+ By default it points to app groups container directory
+ App makes attempt to create this path if it doesn't exist
+ You could change it at any time you want
+ **/
+
+@property (strong, nonatomic, readonly, nullable) NSURL * appGroupDocumentsURL;
+
+/**
  This is the URL where local documents container points (where local files stored)
  By default it points to local Documents directory
  App makes attempt to create this path if it doesn't exist
@@ -47,6 +64,8 @@ CDBDocumentDelegate
 **/
 
 @property (copy, nonatomic, nullable) NSURL * localDocumentsURL;
+
+
 
 /**
  Contains all documents that present in container
@@ -57,14 +76,15 @@ CDBDocumentDelegate
 /**
  This is for cloudConnection only
 **/
-- (void)initiateUsingCloudPathComponent:(NSString * _Nullable)pathComponent;
+- (void) initiateUsingContainerPathComponent: (NSString * _Nullable) pathComponent
+                          appGroupIdentifier: (NSString * _Nullable) appGroupID;
 
 /**
  This is for cloudConnection only
  **/
 
-- (void)updateForUbiquityActive:(BOOL)active
-      usingUbiquityContainerURL:(NSURL * _Nullable)containerURL;
+- (void) updateForUbiquityActive: (BOOL) active
+       usingUbiquityContainerURL: (NSURL * _Nullable) ubiquityContainerURL;
 
 /**
  return all URLs in specified directory

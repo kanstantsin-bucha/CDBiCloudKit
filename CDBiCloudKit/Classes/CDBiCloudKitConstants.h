@@ -17,8 +17,9 @@
 
 typedef NS_OPTIONS(NSUInteger, CDBCloudStoreState) {
     CDBCloudStoreUbiquitosAvailable = 1 << 0, // 1 - ubiquitos availble for store / 0 - local
-    CDBCloudStoreUbiquitosActive = 1 << 1, // 1 - current store is ubiquitos / 0 - local
-    CDBCloudStoreUbiquitosInitiated = 1 << 2 // 1 - ubiquitos initiated / 0 - waiting for initialization
+    CDBCloudStoreUbiquitosActive = 1 << 1, // 1 - current store is ubiquitos / 0 - appGroup/local
+    CDBCloudStoreUbiquitosInitiated = 1 << 2, // 1 - ubiquitos initiated / 0 - waiting for initialization
+    CDBCloudStoreAppGroupActive = 1 << 3, // 1 - current store is appGroup / 0 - local
 };
 
 

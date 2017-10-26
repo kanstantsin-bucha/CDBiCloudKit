@@ -1,5 +1,5 @@
 framework module CDBKit {
-  umbrella header "CDBKit-OSX-umbrella.h"
+  umbrella header "CDBKit-macOS-umbrella.h"
 
   export *
   module * { export * }

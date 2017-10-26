@@ -39,12 +39,13 @@ extern NSString * _Nonnull CDBCloudConnectionDidChangeState;
 
 + (instancetype _Nullable)sharedInstance;
 
-- (void)initiateWithUbiquityDesired:(BOOL)desired
-           usingContainerIdentifier:(NSString * _Nullable)ID
-             documentsPathComponent:(NSString * _Nullable)pathComponent
-                          storeName:(NSString * _Nullable)storeName
-                      storeModelURL:(NSURL * _Nullable)storeModelURL
-                           delegete:(id<CDBCloudConnectionDelegate> _Nullable)delegate;
+- (void) initiateWithUbiquityDesired: (BOOL) desired
+            usingContainerIdentifier: (NSString * _Nullable) containerID
+              documentsPathComponent: (NSString * _Nullable) pathComponent
+                  appGroupIdentifier: (NSString * _Nullable) appGroupID
+                           storeName: (NSString * _Nullable) storeName
+                       storeModelURL: (NSURL * _Nullable) storeModelURL
+                            delegete: (id<CDBCloudConnectionDelegate> _Nullable) delegate;
 
 - (void)showDeniedAccessAlert;
 - (void)provideStateChanges;

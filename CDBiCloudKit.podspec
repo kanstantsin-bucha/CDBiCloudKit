@@ -6,12 +6,12 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
-@version = "1.2.3"
+@version = "1.3.0"
 
 Pod::Spec.new do |s|
   s.name             = "CDBiCloudKit"
   s.version          = @version
-  s.summary          = "Documents, CoreData Kit for iCloud"
+  s.summary          = "Documents and CoreData Kit for iCloud sync"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

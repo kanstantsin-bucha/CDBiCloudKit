@@ -20,6 +20,7 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
 @property (copy, nonatomic) NSString * containerID;
 @property (copy, nonatomic) NSString * documentsPathComponent;
 @property (copy, nonatomic) NSString * storeName;
+@property (copy, nonatomic) NSString * appGroupID;
 @property (strong, nonatomic) NSURL * storeModelURL;
 
 
@@ -66,9 +67,10 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
     if (_documents == nil
         && self.isInitiated) {
         _documents = [CDBCloudDocuments new];
-        [_documents initiateUsingCloudPathComponent:self.documentsPathComponent];
-        [_documents updateForUbiquityActive:self.ubiquitosActive
-                  usingUbiquityContainerURL:self.ubiquityContainerURL];
+        [_documents initiateUsingContainerPathComponent: self.documentsPathComponent
+                                     appGroupIdentifier: self.appGroupID];
+        [_documents updateForUbiquityActive: self.ubiquitosActive
+                  usingUbiquityContainerURL: self.ubiquityContainerURL];
     }
     return _documents;
 }
@@ -79,11 +81,12 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
         && self.storeName.length > 0
         && self.storeModelURL.path.length > 0) {
         _store = [CDBCloudStore new];
-        [_store initiateWithName:self.storeName
-                        modelURL:self.storeModelURL];
-        [_store updateForUbiquityActive:self.ubiquitosActive
-             usingSameUbiquityContainer:self.usingSameUbiquityContainer
-                                withURL:self.ubiquityContainerURL];
+        [_store initiateWithName: self.storeName
+                        modelURL: self.storeModelURL
+              appGroupIdentifier: self.appGroupID];
+        [_store updateForUbiquityActive: self.ubiquitosActive
+             usingSameUbiquityContainer: self.usingSameUbiquityContainer
+                                withURL: self.ubiquityContainerURL];
     }
     return _store;
 }
@@ -126,14 +129,16 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)initiateWithUbiquityDesired:(BOOL)desired
-           usingContainerIdentifier:(NSString * _Nullable)ID
-             documentsPathComponent:(NSString * _Nullable)pathComponent
-                          storeName:(NSString * _Nullable)storeName
-                      storeModelURL:(NSURL * _Nullable)storeModelURL
-                           delegete:(id<CDBCloudConnectionDelegate>)delegate {
+- (void) initiateWithUbiquityDesired: (BOOL) desired
+            usingContainerIdentifier: (NSString * _Nullable) containerID
+              documentsPathComponent: (NSString * _Nullable) pathComponent
+                  appGroupIdentifier: (NSString * _Nullable) appGroupID
+                           storeName: (NSString * _Nullable) storeName
+                       storeModelURL: (NSURL * _Nullable) storeModelURL
+                            delegete: (id<CDBCloudConnectionDelegate> _Nullable) delegate {
     self.ubiquitosDesired = desired;
-    self.containerID = ID;
+    self.containerID = containerID;
+    self.appGroupID = appGroupID;
     self.documentsPathComponent = pathComponent;
     self.storeName = storeName;
     self.storeModelURL = storeModelURL;
@@ -198,8 +203,8 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
 }
 
 - (void)provideStateChanges {
-    [_documents updateForUbiquityActive:self.ubiquitosActive
-              usingUbiquityContainerURL:self.ubiquityContainerURL];
+    [_documents updateForUbiquityActive: self.ubiquitosActive
+              usingUbiquityContainerURL: self.ubiquityContainerURL];
     [_store updateForUbiquityActive:self.ubiquitosActive
          usingSameUbiquityContainer:self.usingSameUbiquityContainer
                             withURL:self.ubiquityContainerURL];

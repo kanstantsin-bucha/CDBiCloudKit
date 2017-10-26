@@ -3,6 +3,7 @@ use_frameworks!
 abstract_target 'Pod' do
 
  pod 'CDBiCloudKit', :path => '../'
+ pod 'CDBKit', :path => '/Users/bucha/busyness/,github/CDBKit/'
 
     target 'CDBiCloudKit_Example' do
         target 'CDBiCloudKit_Tests' do

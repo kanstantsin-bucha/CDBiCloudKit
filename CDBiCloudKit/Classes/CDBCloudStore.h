@@ -26,6 +26,7 @@ BOOL CDBCheckStoreState(CDBCloudStoreState state, NSUInteger option);
 @interface CDBCloudStore : NSObject
 
 @property (assign, nonatomic, readonly) BOOL ubiquitous;
+@property (assign, nonatomic, readonly) BOOL appGroupsActive;
 @property (strong, nonatomic, readonly, nullable) NSManagedObjectContext * currentContext;
 @property (weak, nonatomic, nullable) id<CDBCloudStoreDelegate> delegate;
 
@@ -51,6 +52,7 @@ BOOL CDBCheckStoreState(CDBCloudStoreState state, NSUInteger option);
 @property (strong, nonatomic, readonly, nullable) NSURL * modelURL;
 @property (strong, nonatomic, readonly, nullable) NSString * name;
 @property (strong, nonatomic, readonly, nullable) NSManagedObjectModel * model;
+@property (copy, nonatomic, readonly, nullable) NSString * appGroupID;
 
 @property (assign, nonatomic, readonly) BOOL localStoreDisabled;
 @property (strong, nonatomic, readonly, nullable) NSManagedObjectContext * localContext;
@@ -67,13 +69,16 @@ BOOL CDBCheckStoreState(CDBCloudStoreState state, NSUInteger option);
 @property (strong, nonatomic, readonly, nullable) NSPersistentStoreCoordinator * ubiquitosStoreCoordinator;
 
 
-- (void)initiateWithName:(NSString * _Nonnull)storeName
-                modelURL:(NSURL * _Nonnull)modelURL;
+- (void) initiateWithName: (NSString * _Nonnull) storeName
+                 modelURL: (NSURL * _Nonnull) modelURL
+       appGroupIdentifier: (NSString * _Nullable) appGroupID;
 
 - (void)updateForUbiquityActive:(BOOL)available
      usingSameUbiquityContainer:(BOOL)sameUbiquityContainer
                         withURL:(NSURL * _Nullable)containerURL;
 
+
+- (void)setAppGroupsActive: (BOOL) appGroupsActive;
 
 - (void)dismissAndDisableLocalCoreDataStack;
 - (void)enableLocalCoreDataStack;

@@ -2,14 +2,16 @@
 
 #if __has_feature(objc_modules)
     @import Foundation;
+    @import CDBKit;
 #else
     #import <Foundation/Foundation.h>
+    #import <CDBKit/CDBKitCore.h>
 #endif
 
 
-#import "CDBiCloudKitConstants.h"
 #import "CDBDocument.h"
-#import <CDBKit/CDBKit.h>
+
+typedef void (^CDBiCloudDocumentCompletion) (CDBDocument * _Nullable document, NSError * _Nullable error);
 
 
 @protocol CDBCloudDocumentsDelegate;

@@ -150,24 +150,12 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
 
 #pragma mark - public -
 
-- (void)showDeniedAccessAlert {
-    #if TARGET_OS_OSX
-        // Mac
-        NSAlert * alert = [NSAlert alertWithMessageText: LSCDB(iCloud Unavailable)
-                                          defaultButton: LSCDB(OK)
-                                        alternateButton: nil
-                                            otherButton: nil
-                              informativeTextWithFormat: LSCDB(Make sure that you are signed into a valid iCloud account and documents are Enabled)];
-        [alert runModal];
-    #elif TARGET_OS_IOS
-        // iOS
-         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:LSCDB(iCloud Unavailable)
-                                                     message:LSCDB(Make sure that you are signed into a valid iCloud account and documents are Enabled)
-                                                    delegate:nil
-                                           cancelButtonTitle:LSCDB(OK)
-                                           otherButtonTitles:nil];
-        [alert show];
-    #endif
+- (void)showDeniedAccessUI {
+    if (self.showDeniedAccessUIHandler == nil) {
+        return;
+    }
+    
+    self.showDeniedAccessUIHandler();
 }
 
 #pragma mark - private -
@@ -190,7 +178,7 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
     if ([self.delegate respondsToSelector:@selector(CDBCloudConnectionDidDetectDisabledCloud:)]) {
         [self.delegate CDBCloudConnectionDidDetectDisabledCloud:self];
     } else {
-        [self showDeniedAccessAlert];
+        [self showDeniedAccessUI];
     }
 }
 

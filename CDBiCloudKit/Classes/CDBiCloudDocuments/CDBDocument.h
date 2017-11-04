@@ -1,13 +1,12 @@
 
 #if __has_feature(objc_modules)
     @import Foundation;
+    @import CDBKit;
 #else
     #import <Foundation/Foundation.h>
+    #import <CDBKit/CDBKitCore.h>
 #endif
 
-
-#import "CDBiCloudKitConstants.h"
-#import <CDBKit/CDBKit.h>
 
 #ifdef __APPLE__
     #include "TargetConditionals.h"
@@ -23,6 +22,23 @@
         typedef NSObject BaseDocument;
     #endif
 #endif
+
+
+typedef NS_ENUM(NSUInteger, CDBFileState) {
+    CDBFileStateUndefined = 0,
+    CDBFileLocal = 1,
+    CDBFileUbiquitousMetadataOnly = 1, // it has metadata only
+    CDBFileUbiquitousDownloaded = 2, // it downloaded to a local store
+    CDBFileUbiquitousCurrent = 3 // it downloaded and has the most current state
+};
+
+#define StringFromCDBFileState(enum) (([@[\
+@"CDBFileStateUndefined",\
+@"CDBFileLocal",\
+@"CDBFileUbiquitousMetadataOnly",\
+@"CDBFileUbiquitousDownloaded",\
+@"CDBFileUbiquitousCurrent",\
+] objectAtIndex:(enum)]))
 
 
 @class CDBDocument;

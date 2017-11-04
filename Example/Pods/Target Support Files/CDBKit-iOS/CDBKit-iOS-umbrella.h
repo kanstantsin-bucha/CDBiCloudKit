@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "CDBKit.h"
+#import "CDBKitCore.h"
 
 FOUNDATION_EXPORT double CDBKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char CDBKitVersionString[];

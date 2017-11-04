@@ -7,6 +7,7 @@
 //
 
 #import "CDBViewController.h"
+#import <CDBiCloudKit/CDBiCloudKit.h>
 
 @interface CDBViewController ()
 

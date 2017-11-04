@@ -3,18 +3,24 @@
 #if __has_feature(objc_modules)
     @import Foundation;
     @import CoreData;
+    @import CDBKit;
 #else
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import <CDBKit/CDBKitCore.h>
 #endif
-
-
-#import <CDBKit/CDBKit.h>
-#import "CDBiCloudKitConstants.h"
 
 
 extern NSString * _Nonnull CDBCloudStoreWillChangeNotification;
 extern NSString * _Nonnull CDBCloudStoreDidChangeNotification;
+
+
+typedef NS_OPTIONS(NSUInteger, CDBCloudStoreState) {
+    CDBCloudStoreUbiquitosAvailable = 1 << 0, // 1 - ubiquitos availble for store / 0 - local
+    CDBCloudStoreUbiquitosActive = 1 << 1, // 1 - current store is ubiquitos / 0 - appGroup/local
+    CDBCloudStoreUbiquitosInitiated = 1 << 2, // 1 - ubiquitos initiated / 0 - waiting for initialization
+    CDBCloudStoreAppGroupActive = 1 << 3, // 1 - current store is appGroup / 0 - local
+};
 
 
 @protocol CDBCloudStoreDelegate;

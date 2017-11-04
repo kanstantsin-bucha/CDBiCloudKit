@@ -1,17 +1,34 @@
 
+
 #if __has_feature(objc_modules)
     @import Foundation;
+    @import CDBKit;
 #else
     #import <Foundation/Foundation.h>
+    #import <CDBKit/CDBKitCore.h>
 #endif
 
-#import <CDBKit/CDBKit.h>
-#import "CDBiCloudKitConstants.h"
+
 #import "CDBCloudDocuments.h"
 #import "CDBCloudStore.h"
 
 
 extern NSString * _Nonnull CDBCloudConnectionDidChangeState;
+
+
+typedef NS_ENUM(NSUInteger, CDBCloudState) {
+    CDBCloudStateUndefined = 0,
+    CDBCloudAccessDenied = 1,
+    CDBCloudAccessGranted = 2,
+    CDBCloudUbiquitosContentAvailable = 3, // Connection established
+};
+
+#define StringFromCloudState(enum) (([@[\
+@"CDBCloudStateUndefined",\
+@"CDBCloudAccessDenied",\
+@"CDBCloudAccessGranted",\
+@"CDBCloudUbiquitosConеtentAvailable",\
+] objectAtIndex:(enum)]))
 
 
 @protocol CDBCloudConnectionDelegate;
@@ -37,6 +54,8 @@ extern NSString * _Nonnull CDBCloudConnectionDidChangeState;
 
 @property (assign, nonatomic) BOOL ubiquitosDesired;
 
+@property (copy, nonatomic, nullable) CDBCompletion showDeniedAccessUIHandler;
+
 + (instancetype _Nullable)sharedInstance;
 
 - (void) initiateWithUbiquityDesired: (BOOL) desired
@@ -47,7 +66,7 @@ extern NSString * _Nonnull CDBCloudConnectionDidChangeState;
                        storeModelURL: (NSURL * _Nullable) storeModelURL
                             delegete: (id<CDBCloudConnectionDelegate> _Nullable) delegate;
 
-- (void)showDeniedAccessAlert;
+- (void)showDeniedAccessUI;
 - (void)provideStateChanges;
              
 

@@ -1,8 +1,14 @@
 PODS:
-  - CDBiCloudKit (1.3.0):
-    - CDBKit (~> 1.2)
+  - CDBiCloudKit (1.4.0):
+    - CDBiCloudKit/CloudDocuments (= 1.4.0)
+    - CDBiCloudKit/CloudStore (= 1.4.0)
+    - CDBKit/Core (~> 1.3)
+  - CDBiCloudKit/CloudDocuments (1.4.0):
+    - CDBKit/Core (~> 1.3)
+  - CDBiCloudKit/CloudStore (1.4.0):
+    - CDBKit/Core (~> 1.3)
     - CDBUUID (~> 1.0.0)
-  - CDBKit (1.2.0)
+  - CDBKit/Core (1.3.0)
   - CDBUUID (1.0.1)
 
 DEPENDENCIES:
@@ -13,8 +19,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CDBiCloudKit: c46751d7433eae034256b1025a190bb0dae82e83
-  CDBKit: 5989950a93f309ab7dba31d62d189c90381faad3
+  CDBiCloudKit: 180cbbe626375eec0a63449014540f069392ba70
+  CDBKit: 48b831ea6ecf246615d1fe815e638b7d1c0f4122
   CDBUUID: 7bed042feb50140be8b886fdba8b758a1d42c81c
 
 PODFILE CHECKSUM: 01e636f4bc6fe5628abe7a702193ed8f335d1124

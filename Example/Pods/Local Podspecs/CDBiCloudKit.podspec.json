@@ -18,7 +18,7 @@
     "osx": "10.10"
   },
   "requires_arc": true,
-  "source_files": "CDBiCloudKit/Classes/CDBiCloudConnection/**/*",
+  "source_files": "CDBiCloudKit/Classes/**/*",
   "frameworks": "Foundation",
   "dependencies": {
     "CDBKit/Core": [

@@ -1,11 +1,7 @@
 
-#if __has_feature(objc_modules)
-    @import Foundation;
-    @import CDBKit;
-#else
-    #import <Foundation/Foundation.h>
-    #import <CDBKit/CDBKitCore.h>
-#endif
+
+#import <Foundation/Foundation.h>
+#import <CDBKit/CDBKitCore.h>
 
 
 #ifdef __APPLE__

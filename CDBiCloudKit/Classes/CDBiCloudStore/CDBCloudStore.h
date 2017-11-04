@@ -1,14 +1,8 @@
 
 
-#if __has_feature(objc_modules)
-    @import Foundation;
-    @import CoreData;
-    @import CDBKit;
-#else
-    #import <Foundation/Foundation.h>
-    #import <CoreData/CoreData.h>
-    #import <CDBKit/CDBKitCore.h>
-#endif
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import <CDBKit/CDBKitCore.h>
 
 
 extern NSString * _Nonnull CDBCloudStoreWillChangeNotification;

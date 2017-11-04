@@ -6,7 +6,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 
-@version = "1.4.0"
+@version = "1.5.0"
 
 Pod::Spec.new do |s|
   s.name             = "CDBiCloudKit"
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.requires_arc = true
 
-  s.source_files = 'CDBiCloudKit/Classes/CDBiCloudConnection/**/*'
+  s.source_files = 'CDBiCloudKit/Classes/**/*'
   s.frameworks = 'Foundation'
 
   s.subspec 'CloudStore' do |cloudStore|
@@ -48,6 +48,6 @@ Pod::Spec.new do |s|
     cloudDocuments.source_files = 'CDBiCloudKit/Classes/CDBiCloudDocuments/**/*'
   end
 
-  s.dependency 'CDBKit/Core', '~> 1.3'
+  s.dependency 'CDBKit/Core', '~> 1.4'
 
 end

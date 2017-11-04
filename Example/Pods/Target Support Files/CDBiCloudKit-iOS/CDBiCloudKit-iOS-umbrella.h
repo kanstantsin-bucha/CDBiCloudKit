@@ -11,7 +11,10 @@
 #endif
 
 #import "CDBCloudConnection.h"
+#import "CDBCloudDocuments.h"
+#import "CDBDocument.h"
 #import "CDBiCloudKit.h"
+#import "CDBCloudStore.h"
 #import "CDBCloudDocuments.h"
 #import "CDBDocument.h"
 #import "CDBCloudStore.h"

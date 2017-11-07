@@ -150,14 +150,6 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
 
 #pragma mark - public -
 
-- (void)showDeniedAccessUI {
-    if (self.showDeniedAccessUIHandler == nil) {
-        return;
-    }
-    
-    self.showDeniedAccessUIHandler();
-}
-
 #pragma mark - private -
 
 #pragma mark handle state changes
@@ -177,9 +169,7 @@ NSString * _Nonnull CDBCloudConnectionDidChangeState = @"CDBCloudConnectionDidCh
 - (void)handleDeniedAccess {
     if ([self.delegate respondsToSelector:@selector(CDBCloudConnectionDidDetectDisabledCloud:)]) {
         [self.delegate CDBCloudConnectionDidDetectDisabledCloud:self];
-    } else {
-        [self showDeniedAccessUI];
-    }
+    } 
 }
 
 - (void)handleStateChanges {

@@ -49,8 +49,6 @@ typedef NS_ENUM(NSUInteger, CDBCloudState) {
 
 @property (assign, nonatomic) BOOL ubiquitosDesired;
 
-@property (copy, nonatomic, nullable) CDBCompletion showDeniedAccessUIHandler;
-
 + (instancetype _Nullable)sharedInstance;
 
 - (void) initiateWithUbiquityDesired: (BOOL) desired
@@ -61,7 +59,6 @@ typedef NS_ENUM(NSUInteger, CDBCloudState) {
                        storeModelURL: (NSURL * _Nullable) storeModelURL
                             delegete: (id<CDBCloudConnectionDelegate> _Nullable) delegate;
 
-- (void)showDeniedAccessUI;
 - (void)provideStateChanges;
              
 
